@@ -1,0 +1,46 @@
+{
+  "authentications": {
+    "AuthProv": {
+      "authType": "oauth2",
+      "httpHeaders": {
+        "Accept": "*/*",
+        "Authorization": "__BASIC_AUTH_HEADER__"
+      },
+      "authError": [
+        "INVALID_SESSION_ID",
+        "Unauthorized"
+      ],
+      "url": "https://zoom.us/oauth/token",
+      "httpMethod": "POST",
+      "httpContentType": "application/x-www-form-urlencoded",
+      "errorPath": "error",
+      "maxRefreshTryCount": 5,
+      "tokenResponsePath": "access_token",
+      "tokenType": "Bearer",
+      "authHeaderName": "Authorization",
+      "httpParams": {
+        "grant_type": "account_credentials",
+        "account_id": "__ACCOUNT_ID__"
+      },
+      "retryFailureStatusCode": [401],
+      "testConnectionParams": {
+        "http": {
+          "url": "https://api.zoom.us/v2/users?page_size=1",
+          "httpHeaders": {
+            "Authorization": "${access_token}",
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          "httpContentType": "application/json",
+          "httpMethod": "GET"
+        },
+        "successResponses": {
+          "statusCode": [200, 201, 204]
+        },
+        "successResponsePath": "responseText",
+        "errors": [400, 401, 402, 403, 404, 500, 501, 502, 503, 504],
+        "errorPath": "error"
+      }
+    }
+  }
+}
