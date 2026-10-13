@@ -14,7 +14,7 @@
       "httpMethod": "POST",
       "httpContentType": "application/x-www-form-urlencoded",
       "errorPath": "error",
-      "maxRefreshTryCount": 10,
+      "maxRefreshTryCount": 5,
       "tokenResponsePath": "access_token",
       "tokenType": "Bearer",
       "authHeaderName": "Authorization",
